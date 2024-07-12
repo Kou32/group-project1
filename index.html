@@ -18,26 +18,26 @@
   />
 </head>
 <body>
-    <div class="bg-info text-light px-4 py-5 mb-5">
+    <header id='header'class="text-light px-3 py-3">
         <div class="container text-center">
-          <h1>Free Game Search Engine</h1>
+          <h1 id="header-text">Free Game Search Engine</h1>
         </div>
-    </div>
+      </header>
 
     <main class="container-fluid center">
         <div class="row">
-          <div class="col-md col-xl-4">
+          <div class="col-md col-xl">
 
-            <div class="card mb-3">
-              <h2 class="h4 card-header custom-card-header">Search Here</h2>
-              <div class="card-body">
+            <div id='form' class="card container-fluid center col-lg-6 border-0">
+              <!-- <h2 id='form-title'class="h4 card-header custom-card-header text-center">Search Here</h2> -->
+              <div id="card" class="card-body">
               <form id="project-form">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
+                    <li class="list-group-item border-0">
                       <input type="text" class="form-control" id="genre-input" placeholder="Genre" />
                       </li>
-                  <li class="list-group-item">
-                    <select id="platform-input" class="form-select">
+                  <li class="list-group-item border-0">
+                    <select id="project-type-input" class="form-select" id ="platform-input">
                       <option value="all" disabled selected>
                         Platform
                       </option>
@@ -52,7 +52,7 @@
                       </option>
                     </select>
                   </li>
-                  <li class="list-group-item">
+                  <li class="list-group-item border-0">
                     <select id="project-type-input" class="form-select">
                       <option value="sort-by-input" disabled selected>
                         Sort By
@@ -66,21 +66,22 @@
                       <option value="popularity">
                         Popularity
                       </option>
-                      <option value="revelance">
+                      <option value="Revelance">
                         Revelance
                       </option>
                     </select>
                   </li>
                 </ul>
-                <div class="card-footer">
-                  <button type="submit" class="submit-btn btn">
+                <div id='card-footer'class="card-footer container-fluid center border-0">
+                  <button type="submit" class="container-fluid center submit-btn">
                     Find New Games!
                   </button>
-                  <div class="card-footer">
-                    <button type="submit" class="surprise-me-btn">
+                </div>
+                  <div class="card-footer container-fluid center border-0">
+                    <button type="submit border-0" class="surprise-me-btn container-fluid center">
                       Surprise Me
                     </button>
-                </div>
+                
               </form>
             </div>
           </div>
@@ -92,8 +93,6 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-    <script src="./assets/js/shared.js"></script>
-    <script src="./assets/js/search.js"></script>
-    <script src = "./assets/js/index.js"></script>
+    <script src = "./assets/js/script.js"></script>
 </body>
 </html>

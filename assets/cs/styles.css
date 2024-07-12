@@ -32,3 +32,6 @@ main{
 button{
     background-color: rgb(216, 216, 216);
 }
+option{
+    background-color: white;
+}

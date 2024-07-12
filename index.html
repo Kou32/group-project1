@@ -3,9 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Free Game Search Engine</title>
+
+    <link rel="stylesheet" href="./assets/cs/styles.css" />
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+  />
 </head>
 <body>
-    <h1>Hello</h1>
+    <div class="bg-info text-light px-4 py-5 mb-5">
+        <div class="container text-center">
+          <h1>Free Game Search Engine</h1>
+        </div>
+    </div>
+
+    <main class="container-fluid center">
+        <div class="row">
+          <div class="col-md col-xl-4">
+
+            <div class="card mb-3">
+              <h2 class="h4 card-header custom-card-header">Search Here</h2>
+              <div class="card-body">
+              <form id="project-form">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                      <input type="text" class="form-control" id="genre-input" placeholder="Genre" />
+                      </li>
+                  <li class="list-group-item">
+                    <select id="project-type-input" class="form-select" id ="platform-input">
+                      <option value="all" disabled selected>
+                        Platform
+                      </option>
+                      <option value="all">
+                        All
+                      </option>
+                      <option value="PC">
+                       PC
+                      </option>
+                      <option value="browser">
+                        Browser
+                      </option>
+                    </select>
+                  </li>
+                  <li class="list-group-item">
+                    <select id="project-type-input" class="form-select">
+                      <option value="sort-by-input" disabled selected>
+                        Sort By
+                      </option>
+                      <option value="release-date">
+                        Release Date
+                      </option>
+                      <option value="alphabetical">
+                        Alphabetical
+                      </option>
+                      <option value="popularity">
+                        Popularity
+                      </option>
+                      <option value="Revelance">
+                        Revelance
+                      </option>
+                    </select>
+                  </li>
+                </ul>
+                <div class="card-footer">
+                  <button type="submit" class="submit-btn">
+                    Find New Games!
+                  </button>
+                  <div class="card-footer">
+                    <button type="submit" class="surprise-me-btn">
+                      Surprise Me
+                    </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script src = "./assets/js/script.js"></script>
 </body>
 </html>

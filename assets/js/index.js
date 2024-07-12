@@ -24,3 +24,13 @@ document.querySelector(".btn").addEventListener("click", function(e) {
     e.preventDefault();
     populateData();
 })
+//make sure the ".btn" is correct html
+document.querySelector(".submit-btn").addEventListener("click", function(e) {
+    e.preventDefault();
+    populateData();
+});
+
+document.querySelector(".surprise-me-btn").addEventListener("click", function(e) {
+    e.preventDefault();
+    surpriseMe();
+});

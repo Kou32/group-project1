@@ -1,12 +1,13 @@
 let userGenre = "";
 let userPlatform = "";
+let userSort = "";
 
 
 // need to add the IDs for the formfields
 function populateData() {
-    userGenre = document.getElementById("").value || "all";
-    userPlatform = document.getElementById("").value || "all";
-    let userSort = "release-date";
+    userGenre = document.getElementById("genre-input").value || "all";
+    userPlatform = document.getElementById("platform-input").value || "all";
+    userSort = document.getElementById("sort-by-input").value || "release-date";
 
     let newUrl = "./search.html";
     newUrl = `${newUrl}?category=${userGenre}&platform=${userPlatform}&sort-by=${userSort}`
@@ -20,11 +21,7 @@ function toSearchPage(newUrl){
 
 
 //make sure the ".btn" is correct in index.html
-// document.querySelector(".btn").addEventListener("click", function(e) {
-//     e.preventDefault();
-//     populateData();
-// })
-//make sure the ".btn" is correct html
+
 document.querySelector(".submit-btn").addEventListener("click", function(e) {
     e.preventDefault();
     populateData();

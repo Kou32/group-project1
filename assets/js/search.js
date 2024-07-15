@@ -8,7 +8,9 @@ function buildLink(platform, genre, preference){
     }
     urlLink = urlLink + "/&fo=json";
     console.log(urlLink);
-    getResponse(urlLink);
+    let response = getResponse(urlLink);
+
+    console.log(response);
 
 }
 let removeGame = document.getElementsByClassName('btn')
@@ -75,3 +77,13 @@ function buildAndAppend(data) {
 function readFromLocalStorage(name) {
     return JSON.parse(localStorage.getItem(name));
 }
+
+function refreshSearch() {
+    let userGenre = document.querySelector("#genre-input").value || "all";
+    let userPlatform = document.querySelector("#platform-input").value || "all";
+    let userSortBy = document.querySelector("#project-type-input").value || "release-date";
+
+    buildLink(userPlatform, userGenre, userSortBy);
+}
+
+document.querySelector("#refresh").addEventListener("click", refreshSearch);

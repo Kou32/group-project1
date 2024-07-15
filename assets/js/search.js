@@ -9,15 +9,6 @@ function buildLink(platform, genre, preference){
     getResponse(urlLink);
 
 }
-function surpriseURL(){
-    urlLink = `https://www.freetogame.com/api/game?id=${id}`
-
-}
-function genRandomNumber(min, max){
-    min = [0]    
-    max = [452]
-    return id.floor(id.random())
-    }
 
 
 function parseQueryParams(){
@@ -26,9 +17,9 @@ function parseQueryParams(){
     console.log(paramsAll);
     paramsEach = paramsAll.split("&");
     console.log(paramsEach);
-    userGenre = paramsEach[0].split("=")[1];
+    userPreference = paramsEach[0].split("=")[1] || "search";
     userPlatform = paramsEach[1].split("=")[1] || "search";
-    buildLink(userGenre,userPlatform,);
+    buildLink(userPreference,userPlatform);
 }
 
 function handleInput() {
@@ -39,4 +30,57 @@ function handleInput() {
     let preferenceInput = document.querySelector("#preference").value || "";
     buildLink(searchInput, formatInput, preferenceInput);
 }
+
+$(function () {
+    const genreText = [
+        'mmorpg',
+        'shooter',
+        'strategy',
+        'moba',
+        'racing',
+        'sports',
+        'social',
+        'sandbox',
+        'open-world',
+        'survival',
+        'pvp',
+        'pve',
+        'pixel',
+        'voxel',
+        'zombie',
+        'turn-based',
+        'first-person',
+        'third-Person',
+        'top-down',
+        'tank',
+        'space',
+        'sailing',
+        'side-scroller',
+        'superhero',
+        'permadeath',
+        'card',
+        'battle-royale',
+        'mmo',
+        'mmofps',
+        'mmotps',
+        '3d',
+        '2d',
+        'anime',
+        'fantasy',
+        'sci-fi',
+        'fighting',
+        'action-rpg',
+        'action',
+        'military',
+        'martial-arts',
+        'flight',
+        'low-spec',
+        'tower-defense',
+        'horror',
+        'mmorts'
+    ];
+    $('#genre-input').autocomplete({
+      source: genreText,
+    });
+  });
 

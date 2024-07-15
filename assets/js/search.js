@@ -1,4 +1,4 @@
-const needToPlayList = getFromLocalStorage("ntp-list") || [];
+const needToPlayList = readFromLocalStorage("ntp-list") || [];
 
 const genreInputEl = $('#genre-input')
 
@@ -90,10 +90,10 @@ $(function () {
     });
   });
 
-function getFromLocalStorage(data) {
-    return localStorage.getItem(data);
+  function saveToLocalStorage(name, data) {
+    localStorage.setItem(name, JSON.stringify(data));
 }
 
-function setToLocalStorage() {
-
+function readFromLocalStorage(name) {
+    return JSON.parse(localStorage.getItem(name));
 }

@@ -1,3 +1,5 @@
+const needToPlayList = getFromLocalStorage("ntp-list") || [];
+
 const genreInputEl = $('#genre-input')
 
 function buildLink(platform, genre, preference){
@@ -88,3 +90,10 @@ $(function () {
     });
   });
 
+function getFromLocalStorage(data) {
+    return localStorage.getItem(data);
+}
+
+function setToLocalStorage() {
+
+}

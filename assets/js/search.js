@@ -32,8 +32,8 @@ const handleInput = function (event) {
     const genreInput = genreInputEl.val();
     console.log(genreInput)
 
-inputGenre(genreInput);
-genreInputEl.val('');
+    inputGenre(genreInput);
+    genreInputEl.val('');
 }
 
 
@@ -120,7 +120,8 @@ $(function () {
 
 
   function addToList(data) {
-
+        needToPlayList.push(data);
+        saveToLocalStorage("ntp-list", needToPlayList);
   }
 
 

@@ -1,3 +1,5 @@
+const genreInputEl = $('#genre-input')
+
 function buildLink(platform, genre, preference){
     urlLink = `https://www.freetogame.com/api/games?platform=${platform}&sort-by=${preference}`
     if (genre === "all" ){
@@ -22,14 +24,16 @@ function parseQueryParams(){
     buildLink(userPreference,userPlatform);
 }
 
-function handleInput() {
-    let platformInput = document.querySelector("#platform-input").value || "";
-    console.log(platformInput);
-    let genreInput = document.querySelector("#genre-input").value || "";
-    console.log(genreInput);
-    let preferenceInput = document.querySelector("#preference").value || "";
-    buildLink(searchInput, formatInput, preferenceInput);
+const handleInput = function (event) {
+    event.preventDefault();
+
+    const genreInput = genreInputEl.val();
+    console.log(genreInput)
+
+inputGenre(genreInput);
+genreInputEl.val('');
 }
+
 
 $(function () {
     const genreText = [
@@ -77,7 +81,7 @@ $(function () {
         'low-spec',
         'tower-defense',
         'horror',
-        'mmorts'
+        'mmorts',
     ];
     $('#genre-input').autocomplete({
       source: genreText,

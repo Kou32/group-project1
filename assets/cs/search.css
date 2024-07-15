@@ -1,0 +1,8 @@
+header{
+    padding: 20px;
+    background-color: rgb(29, 29, 29);
+}
+#header-title{
+    font-size: medium;
+    color: white;
+}

@@ -1,4 +1,4 @@
-//const genreInputEl = $('#genre-input')
+const genreInputEl = $('#genre-input')
 
 async function fetchFromGamesSite(url){
     const response = await fetch(url, {
@@ -23,8 +23,17 @@ async function surpriseMe() {
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
+const handleInput = function (event) {
+    event.preventDefault();
+
+    const genreInput = genreInputEl.val();
+    console.log(genreInput)
+
+inputGenre(genreInput);
+genreInputEl.val('');
+}
 // autocompete genre titles
-/*$(function () {
+$(function () {
     const genreText = [
         'mmorpg',
         'shooter',
@@ -75,4 +84,4 @@ function getRandomInt(max) {
     $('#genre-input').autocomplete({
       source: genreText,
     });
-  }); */
+  });

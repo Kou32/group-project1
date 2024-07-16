@@ -13,6 +13,8 @@
   />
 </head>
 <body>
+
+
         <header class="row">
             <h1 id='header-title'class="col-12 col-lg-1">Free Game Search Engine</h1>
             <div id="fo" class="form col-12 col-lg-3">
@@ -68,9 +70,56 @@
             <div class="col-12 col-lg-2 flex-row justify-content-center">
                 <button id="refresh" id="header-btn" type="submit">
                     Refresh
-                    </button>
+                </button>
+                <div class="cart-container">
+                    <button type="button" id="cart-btn" class="btn btn-light">
+                        Saved
+                    </button>  
+                </div>    
             </div>
-        </header>
+
+            <div class="modal fade" id="cart-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header border-bottom-0">
+                      <h5 class="modal-title" id="exampleModalLabel">
+                        Your Saved Games
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <table class="table table-image">
+                        <thead>
+                          <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Game</th>
+                            <th scope="col">Genre</th>
+                            <th scope="col">Platform</th>
+                            <th scope="col">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="w-25">
+                              <a href="#" class="btn btn-danger btn-sm">
+                                <i class="fa fa-times">remove</i>
+                              </a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table> 
+                    </div>
+                    <div class="modal-footer border-top-0 d-flex justify-content-between">
+                      <button id="close-btn" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Close</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+                
+            </div>
+    </header>
 
         <main class="row">
             <div class='card'id="card">
@@ -89,6 +138,7 @@
             <!-- title thumbanil imasge genre description platform release date
              2 buttons for going to the game and another to add to storage -->
         </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="assets/js/shared.js"></script>

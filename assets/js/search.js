@@ -31,7 +31,7 @@ for (i = 0; i < addGameToList.length; i++ ){
     button.addEventListener('click', addGameToListClicked)
 
 }
-function updateCart(){
+function updateModalCart(){
     let gameCart = document.getElementsByClassName('row')[0]
     let gameDesc = gameCart.getElementsByClassName('card')
     for (i = 0; i < gamedesc.length; i++){
@@ -98,7 +98,7 @@ function buildAndAppend(data) {
   }
 
 
-function addToList([data]) {
+function addToList(data) {
         needToPlayList.push(data);
         saveToLocalStorage("ntp-list", needToPlayList);
 }

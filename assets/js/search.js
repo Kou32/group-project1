@@ -32,9 +32,10 @@ function parseQueryParams(){
     console.log(paramsAll);
     paramsEach = paramsAll.split("&");
     console.log(paramsEach);
-    userPreference = paramsEach[0].split("=")[1];
+    userCategory = paramsEach[0].split("=")[1];
     userPlatform = paramsEach[1].split("=")[1] || "search";
-    buildLink(userPreference,userPlatform);
+    userSortBy = paramsEach[2].split("="[1]) || "release-date";
+    buildLink(userPlatform,userCategory, userSortBy);
 }
 
 
@@ -46,24 +47,31 @@ function buildAndAppend(data) {
         let tempCard = buildElement(data[i]);
 
         document.querySelector("#card").append(tempCard);
+        ScrollReveal().reveal(".card", {delay: 300});
     }
   }
 
   function buildElement(data) {
     let div = document.createElement("div");
-    div.setAttribute("class", "card bg-light text-dark mb-3 p-3")
+    div.setAttribute("class", "card")
     div.innerHTML = `
-        <div class="card-body">
-            <h3>${data.title || "N/A"}</h3>
-            <img src=${data.thumbnail} alt="thumbnail image">
-            <p class="card-para">
-                <strong>Genre:</strong> ${data.genre || "N/A"}<br>
-                <strong>Description:</strong> ${data.short_description || "N/A"}<br>
-                <strong>Platform:</strong> ${data.platform || "N/A"}<br>
-                <strong>Release Date:</strong> ${data.release_date || "N/A"}<br>
-            </p>
-            <a href=${data.game_url} class="btn btn-dark">Go To Game<a/>
-            <button onClick="addToList(${data})">Add To List</button>
+        <card>
+            <div class="card-left">
+                <h4>${data.title || "N/A"}</h4>
+
+                <a href=${data.game_url}><img src=${data.thumbnail} target="_blank" alt="Game image" ></a>
+            </div>
+            <div class="card-right">
+                <p class="card-para">
+                    <strong>Genre:</strong> ${data.genre || "N/A"}<br>
+                    <strong>Description:</strong> ${data.short_description || "N/A"}<br>
+                    <strong>Platform:</strong> ${data.platform || "N/A"}<br>
+                    <strong>Release Date:</strong> ${data.release_date || "N/A"}<br>
+                </p>
+                <a href=${data.game_url} class="btn btn-dark">Go To Game<a/>
+                <button onClick="addToList(${data})">Add To List</button>
+            </div>
+        </card>
     `
     return div;
   }
@@ -110,3 +118,5 @@ document.querySelector("#x-close-btn").addEventListener("click", function(event)
 // $(document).ready(function() {  
 //     $('#cart-modal').modal('show');
 //   });
+
+parseQueryParams();

@@ -91,15 +91,20 @@ function refreshSearch() {
 
 document.querySelector("#refresh").addEventListener("click", refreshSearch);
 
+
+
+// Modal Shopping Cart
 document.querySelector("#cart-btn").addEventListener("click", function(event){
     $('#cart-modal').modal('show');
 });
 
+document.querySelector("#close-btn").addEventListener("click", function(event){
+    $('#cart-modal').modal('hide');
+});
+document.querySelector("#x-close-btn").addEventListener("click", function(event){
+    $('#cart-modal').modal('hide');
+});
 
-
-
-
-// Modal Shopping Cart
 // $(document).ready(function() {  
 //     $('#cart-modal').modal('show');
 //   });

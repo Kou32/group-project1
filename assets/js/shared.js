@@ -1,6 +1,8 @@
 const genreInputEl = $('#genre-input')
 
 async function fetchFromGamesSite(url){
+    let result;
+     
     const response = await fetch(url, {
         // mode: "no-cors",
         method: 'GET',
@@ -8,10 +10,14 @@ async function fetchFromGamesSite(url){
             'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com',
             'x-rapidapi-key' : '3e6cc8af84msh922be3a69454242p1dd0dcjsn984e8786f25f'
         }
+    }).then(function (response) {
+        return response.json();
+    }).then(function (data) {
+        console.log(data);
+        result = data;
     })
-
-    const data = response.json();
-    return data
+    
+    return result;
 }
 
 async function surpriseMe() {

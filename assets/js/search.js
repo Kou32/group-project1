@@ -11,9 +11,9 @@ async function buildLink(platform, genre, preference){
 
     urlLink = urlLink + "/&fo=json";
     console.log(urlLink);
-    let response = fetchFromGamesSite(urlLink);
+    let response = await fetchFromGamesSite(urlLink);
 
-    console.log(response);
+    buildAndAppend(response);
 
 }
 // let removeGame = document.getElementsByClassName('btn')
@@ -39,12 +39,13 @@ function parseQueryParams(){
 
 
 function buildAndAppend(data) {
+
     document.querySelector("#card").innerHTML = "";
 
     for (let i = 0; i < data.length; i++) {
         let tempCard = buildElement(data[i]);
 
-        document.querySelector("#card").appendChild(tempCard);
+        document.querySelector("#card").append(tempCard);
     }
   }
 
@@ -55,15 +56,16 @@ function buildAndAppend(data) {
         <div class="card-body">
             <h3>${data.title || "N/A"}</h3>
             <img src=${data.thumbnail} alt="thumbnail image">
-            <p>
-                <strong>Genre:</strong>${data.genre || "N/A"}<br>
-                <strong>Description:</strong>${data.short_description || "N/A"}<br>
-                <strong>Platform:</strong>${data.platform || "N/A"}<br>
-                <strong>Release Date:</strong>${data.release_date || "N/A"}<br>
+            <p class="card-para">
+                <strong>Genre:</strong> ${data.genre || "N/A"}<br>
+                <strong>Description:</strong> ${data.short_description || "N/A"}<br>
+                <strong>Platform:</strong> ${data.platform || "N/A"}<br>
+                <strong>Release Date:</strong> ${data.release_date || "N/A"}<br>
             </p>
             <a href=${data.game_url} class="btn btn-dark">Go To Game<a/>
             <button onClick="addToList(${data})">Add To List</button>
     `
+    return div;
   }
 
 
@@ -83,7 +85,7 @@ function readFromLocalStorage(name) {
 
 function refreshSearch() {
     let userGenre = document.querySelector("#genre-input").value || "all";
-    let userPlatform = document.querySelector("#platform-input").value || "all";
+    let userPlatform = document.querySelector("#platform-input").value.toLowerCase() || "all";
     let userSortBy = document.querySelector("#project-type-input").value || "release-date";
 
     buildLink(userPlatform, userGenre, userSortBy);

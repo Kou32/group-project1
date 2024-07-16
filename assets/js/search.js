@@ -92,3 +92,16 @@ function refreshSearch() {
 }
 
 document.querySelector("#refresh").addEventListener("click", refreshSearch);
+
+document.querySelector("#cart-btn").addEventListener("click", function(event){
+    $('#cart-modal').modal('show');
+});
+
+
+
+
+
+// Modal Shopping Cart
+// $(document).ready(function() {  
+//     $('#cart-modal').modal('show');
+//   });

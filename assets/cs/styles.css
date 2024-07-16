@@ -1,6 +1,14 @@
+body {
+    background-image: url('../title-image.png');
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-size: 135%;
+    background-position: 48% 5% ;
+}
+
 *{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-color: rgb(77, 77, 77)
+    /* background-color: rgb(77, 77, 77) */
 }
 #header{
     background-color: rgb(29, 29, 29);
@@ -14,12 +22,12 @@
     background-color: rgb(29, 29, 29);
 }
 #form{
-    margin-top: 50px;
+    margin-top: 175px;
     background-color: rgb(77, 77, 77);
 }
-main{
+/* main{
     background-color: rgb(77, 77, 77);
-}
+} */
 #card{
     background-color: rgb(77, 77, 77);
 }
@@ -28,8 +36,8 @@ main{
 }
 #project-form .border-0{
     background-color: rgb(77, 77, 77);
-}
-button{
+} 
+/* button{
     background-color: rgb(216, 216, 216);
 }
 option{

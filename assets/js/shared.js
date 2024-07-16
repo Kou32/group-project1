@@ -1,5 +1,8 @@
 const genreInputEl = $('#genre-input')
 
+let fetchedGames = []
+
+
 async function fetchFromGamesSite(url){
     let result;
      
@@ -17,6 +20,7 @@ async function fetchFromGamesSite(url){
         result = data;
     })
     
+    fetchedGames = result;
     return result;
 }
 

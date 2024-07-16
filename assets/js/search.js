@@ -68,7 +68,7 @@ function buildAndAppend(data) {
         let tempCard = buildElement(data[i]);
 
         document.querySelector("#card").append(tempCard);
-        ScrollReveal().reveal(".card", {delay: 300});
+        ScrollReveal().reveal(".card", {delay: 250});
     }
   }
 
@@ -90,7 +90,7 @@ function buildAndAppend(data) {
                     <strong>Release Date:</strong> ${data.release_date || "N/A"}<br>
                 </p>
                 <a href=${data.game_url} class="btn btn-dark">Go To Game<a/>
-                <button onClick="addToList(${data})">Add To List</button>
+                <button onClick="addToList(${data.id})">Add To List</button>
             </div>
         </card>
     `
@@ -98,10 +98,18 @@ function buildAndAppend(data) {
   }
 
 
-function addToList(data) {
-        needToPlayList.push(data);
-        saveToLocalStorage("ntp-list", needToPlayList);
-}
+  function addToList(id) {
+    console.log(id);
+    const gameToAdd = fetchedGames.find( (game) => game.id === id ) 
+    console.log(gameToAdd)
+    needToPlayList.push(gameToAdd);
+    saveToLocalStorage("ntp-list", needToPlayList);
+    // when needing to get objects
+    //readFromLocalStorage("ntp-list")[index].valueToFind
+    //example:
+    //readFromLocalStorage("ntp-list")[2].title
+    
+  }
 
 
   function saveToLocalStorage(name, data) {
@@ -140,4 +148,7 @@ document.querySelector("#x-close-btn").addEventListener("click", function(event)
 //     $('#cart-modal').modal('show');
 //   });
 
- parseQueryParams();
+
+if (window.location.href.includes("=")){
+    parseQueryParams();
+}

@@ -1,6 +1,10 @@
+*{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 main{
 background-color: rgb(77, 77, 77);
 }    
+
 header{
     padding: 20px;
     background-color: rgb(29, 29, 29);
@@ -49,4 +53,10 @@ p{
 }
 .card-right{
     padding: 15px;
+}
+header form{
+    background-color: rgb(29, 29, 29);
+}
+.list-group-item{
+    padding: 0;
 }

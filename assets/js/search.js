@@ -16,14 +16,14 @@ async function buildLink(platform, genre, preference){
     buildAndAppend(response);
 
 }
-// let removeGame = document.getElementsByClassName('btn')
-// console.log(removeGame)
-// for ( i = 0; i < removeGame.length; i++)
-//     button = removeGame[i]
-//     button.addEventListener('click', function(event){
-//         let gameRemoval = event.target
-//         gameRemoval.parentElement.parentElement.remove()
-//     })
+ let removeGame = document.getElementsByClassName('btn-sm')
+ console.log(removeGame)
+ for ( i = 0; i < removeGame.length; i++)
+     button = removeGame[i]
+     button.addEventListener('click', function(event){
+         let gameRemoval = event.target
+         gameRemoval.parentElement.parentElement.remove()
+     })
 
 
 function parseQueryParams(){

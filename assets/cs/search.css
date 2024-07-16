@@ -1,6 +1,10 @@
+*{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 main{
 background-color: rgb(77, 77, 77);
 }    
+
 header{
     padding: 20px;
     background-color: rgb(29, 29, 29);
@@ -51,24 +55,6 @@ p{
     padding: 15px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .container {
     padding: 2rem 0rem;
   }
@@ -97,3 +83,10 @@ p{
   .modal-footer {
     padding-top: 0rem;
   }
+header form{
+    background-color: rgb(29, 29, 29);
+}
+.list-group-item{
+    padding: 0;
+}
+

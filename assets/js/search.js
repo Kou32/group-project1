@@ -30,7 +30,7 @@ function removeFromCart(event){
     buttonClicked.parentElement.parentElement.remove()
     updateCart()
 }
-let addGameToList = document.getElementsByClassName('')
+let addGameToList = document.getElementsByClassName('addToList')
 for (i = 0; i < addGameToList.length; i++ ){
     button = addGameToList[i]
     button.addEventListener('click', addGameToListClicked)
@@ -95,11 +95,11 @@ function buildAndAppend(data) {
   }
 
 
-/*  function addToList(data) {
+  function addToList(data) {
         needToPlayList.push(data);
         saveToLocalStorage("ntp-list", needToPlayList);
   }
-*/
+
 
   function saveToLocalStorage(name, data) {
     localStorage.setItem(name, JSON.stringify(data));

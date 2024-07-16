@@ -6,7 +6,7 @@ let userSort = "";
 // need to add the IDs for the formfields
 function populateData() {
     userGenre = document.getElementById("genre-input").value || "all";
-    userPlatform = document.getElementById("platform-input").value.toLowerCase() || "all";
+    userPlatform = document.getElementById("platform-input").value || "all";
     userSort = document.getElementById("sort-by-input").value || "release-date";
 
     let newUrl = "./search.html";

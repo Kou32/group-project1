@@ -15,7 +15,7 @@ async function buildLink(platform, genre, preference){
 
     buildAndAppend(response);
 
-}
+}function first(){
  let removeGame = document.getElementsByClassName('btn-sm')
  console.log(removeGame)
  for ( i = 0; i < removeGame.length; i++)
@@ -23,8 +23,34 @@ async function buildLink(platform, genre, preference){
      button.addEventListener('click', function(event){
          let gameRemoval = event.target
          gameRemoval.parentElement.parentElement.remove()
-     })
+     }) 
+}     
+function removeFromCart(event){
+    buttonClicked = event.target
+    buttonClicked.parentElement.parentElement.remove()
+    updateCart()
+}
+let addGameToList = document.getElementsByClassName('')
+for (i = 0; i < addGameToList.length; i++ ){
+    button = addGameToList[i]
+    button.addEventListener('click', addGameToListClicked)
 
+}
+function updateCart(){
+    let gameCart = document.getElementsByClassName('row')[0]
+    let gameDesc = gameCart.getElementsByClassName('card')
+    for (i = 0; i < gamedesc.length; i++){
+        gamedesc = gamedesc[i]
+        console.log(gameCart)
+    }
+
+}
+function addGameToListClicked(event){
+   button = event.target 
+   game = button.parentElement.parentElement
+   gameTitle = gameData.getElementsByClassName('card')[0].innertext
+   console.log(title)
+}
 
 function parseQueryParams(){
     const url = window.location.href;
@@ -69,11 +95,11 @@ function buildAndAppend(data) {
   }
 
 
-  function addToList(data) {
+/*  function addToList(data) {
         needToPlayList.push(data);
         saveToLocalStorage("ntp-list", needToPlayList);
   }
-
+*/
 
   function saveToLocalStorage(name, data) {
     localStorage.setItem(name, JSON.stringify(data));

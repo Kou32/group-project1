@@ -12,7 +12,7 @@ function populateData() {
     let newUrl = "./search.html";
     newUrl = `${newUrl}?category=${userGenre}&platform=${userPlatform}&sort-by=${userSort}`
 
-    
+    toSearchPage(newUrl);
 }
 
 function toSearchPage(newUrl){

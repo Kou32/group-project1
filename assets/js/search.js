@@ -15,8 +15,8 @@ async function buildLink(platform, genre, preference){
 
     buildAndAppend(response);
 
-}function first(){
- let removeGame = document.getElementsByClassName('btn-sm')
+}
+let removeGame = document.getElementsByClassName('btn-sm')
  console.log(removeGame)
  for ( i = 0; i < removeGame.length; i++)
      button = removeGame[i]
@@ -24,13 +24,8 @@ async function buildLink(platform, genre, preference){
          let gameRemoval = event.target
          gameRemoval.parentElement.parentElement.remove()
      }) 
-}     
-function removeFromCart(event){
-    buttonClicked = event.target
-    buttonClicked.parentElement.parentElement.remove()
-    updateCart()
-}
-let addGameToList = document.getElementsByClassName('addToList')
+
+let addGameToList = document.getElementsByClassName('#addToList')
 for (i = 0; i < addGameToList.length; i++ ){
     button = addGameToList[i]
     button.addEventListener('click', addGameToListClicked)
@@ -103,10 +98,10 @@ function buildAndAppend(data) {
   }
 
 
-  function addToList(data) {
+function addToList([data]) {
         needToPlayList.push(data);
         saveToLocalStorage("ntp-list", needToPlayList);
-  }
+}
 
 
   function saveToLocalStorage(name, data) {
@@ -125,7 +120,7 @@ function refreshSearch() {
     buildLink(userPlatform, userGenre, userSortBy);
 }
 
-document.querySelector("#refresh").addEventListener("click", refreshSearch);
+document.querySelector("#header-btn").addEventListener("click", refreshSearch);
 
 
 
@@ -145,4 +140,4 @@ document.querySelector("#x-close-btn").addEventListener("click", function(event)
 //     $('#cart-modal').modal('show');
 //   });
 
-parseQueryParams();
+ parseQueryParams();

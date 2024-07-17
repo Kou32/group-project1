@@ -60,7 +60,7 @@ function buildAndAppend(data) {
                     <strong>Release Date:</strong> ${data.release_date || "N/A"}<br>
                 </p>
                 <a href=${data.game_url} class="btn btn-dark">Go To Game<a/>
-                <button onClick="addToList(${data.id})">Add To List</button>
+                <button class="btn btn-dark" onClick="addToList(${data.id})">Add To List</button>
             </div>
         </card>
     `

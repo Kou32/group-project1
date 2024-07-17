@@ -65,6 +65,13 @@ p{
     margin: 10px;
     margin-right: 5px;
   }
+  img{
+    width: 400px;
+  }
+  card{
+    flex-direction: column;
+    align-content: center;
+  }
 }
 
 

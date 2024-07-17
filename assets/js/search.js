@@ -1,4 +1,4 @@
-const needToPlayList = readFromLocalStorage("ntp-list") || [];
+let needToPlayList = readFromLocalStorage("ntp-list") || [];
 
 async function buildLink(platform, genre, preference){
     urlLink = `https://free-to-play-games-database.p.rapidapi.com/api/games?platform=${platform}`
@@ -16,15 +16,7 @@ async function buildLink(platform, genre, preference){
     buildAndAppend(response);
 
 }
-/*let removeGame = document.getElementsByClassName('btn-danger')
- console.log(removeGame)
- for ( i = 0; i < removeGame.length; i++)
-    button = removeGame[i]
-    button.addEventListener('btn-sm', function(event){
-         let gameRemoval = event.target
-         gameRemoval.parentElement.parentElement.remove()
-     }) 
-*/
+
 function parseQueryParams(){
     const url = window.location.href;
     let paramsAll = url.split("?")[1];
@@ -78,26 +70,41 @@ function buildAndAppend(data) {
 
 
   function addToList(id) {
+    for (let i = 0; i < needToPlayList.length; i++){
+        if (id == needToPlayList[i].id){
+            return;
+        }
+    }
+
     console.log(id);
     const gameToAdd = fetchedGames.find( (game) => game.id === id ) 
     console.log(gameToAdd)
     needToPlayList.push(gameToAdd);
     saveToLocalStorage("ntp-list", needToPlayList);
-    populateList()
-    // when needing to get objects
-    //readFromLocalStorage("ntp-list")[index].valueToFind
-    //example:
-    //readFromLocalStorage("ntp-list")[2].title
+    
   }
 
   function populateList(){
-    needToPlayList.forEach( function(game){
-        const tableBody = document.querySelector("#game-data")
-        tableBody.innerHTML = ""
+
+      const tableBody = document.querySelector("#game-data")
+      tableBody.innerHTML = ""
+      
+      needToPlayList.forEach( function(game){
+          
         const tableRow = document.createElement("tr");
 
         const gameColumn = document.createElement("td");
-        gameColumn.textContent = game.title;
+        const gameLink = document.createElement("a");
+        gameLink.setAttribute("href", game.game_url);
+
+        const gameImage = document.createElement("img");
+        gameImage.setAttribute("src", game.thumbnail);
+        gameImage.style.height = "15%";
+        gameImage.style.width = "auto";
+        
+        gameLink.appendChild(gameImage);
+        
+        gameColumn.appendChild(gameLink);
 
         const genreColumn = document.createElement("td");
         genreColumn.textContent = game.genre;
@@ -110,6 +117,9 @@ function buildAndAppend(data) {
         
         const linkTag = document.createElement("a");
         linkTag.setAttribute("class", "btn btn-danger btn-sm");
+        linkTag.setAttribute("gameId", game.id)
+        linkTag.innerHTML = "Remove";
+        linkTag.addEventListener('click', removeFromList) 
 
         const iconTag = document.createElement("i");
         iconTag.setAttribute("class", "fa fa-times");
@@ -125,6 +135,29 @@ function buildAndAppend(data) {
         tableBody.appendChild(tableRow)
         
     })
+  }
+
+  function removeFromList() {
+        let removeId = this.getAttribute("gameId");
+
+        console.log(removeId);
+
+        const gameToRemove = needToPlayList.find( (game) => game.id == removeId )
+
+        let tempGameList = [];
+
+        console.log(gameToRemove);
+
+        for (let i = 0; i < needToPlayList.length; i++){
+            if (needToPlayList[i] === gameToRemove){
+            } else {
+                tempGameList.push(needToPlayList[i]);
+            }
+        }
+
+        saveToLocalStorage("ntp-list", tempGameList);
+        needToPlayList = readFromLocalStorage("ntp-list");
+        populateList();
   }
 
 
@@ -151,6 +184,7 @@ document.querySelector("#refresh").addEventListener("click", refreshSearch);
 // Modal Shopping Cart
 document.querySelector("#cart-btn").addEventListener("click", function(event){
     $('#cart-modal').modal('show');
+    populateList();
 });
 
 document.querySelector("#close-btn").addEventListener("click", function(event){
@@ -159,10 +193,6 @@ document.querySelector("#close-btn").addEventListener("click", function(event){
 document.querySelector("#x-close-btn").addEventListener("click", function(event){
     $('#cart-modal').modal('hide');
 });
-
-// $(document).ready(function() {  
-//     $('#cart-modal').modal('show');
-//   });
 
 
 if (window.location.href.includes("=")){

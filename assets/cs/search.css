@@ -2,12 +2,12 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 main{
-/* background-color: rgb(77, 77, 77); */
+background-color: rgb(77, 77, 77);
 }    
 
-body{
-  display: flex;
-  flex-direction: column;
+header{
+    padding: 20px;
+    background-color: rgb(29, 29, 29);
 }
 #header-title{
     font-size: medium;
@@ -56,18 +56,7 @@ p{
 .card-right{
     padding: 15px;
 }
-header{
-    width: 100%;
-    padding: 20px;
-    margin: 0;
-    background-color: rgb(29, 29, 29);
-    position: fixed;
-    z-index: 2;
 
-}
-#card{
-  margin-top: 150px;
-}
 @media screen and (min-width: 376px) and (max-width: 991px) {
   #refresh, #cart-btn {
     display: block;

@@ -1,10 +1,10 @@
 let needToPlayList = readFromLocalStorage("ntp-list") || [];
 
-async function buildLink(platform, genre, preference){
+async function buildLink(platform, genre, preference) {
     urlLink = `https://free-to-play-games-database.p.rapidapi.com/api/games?platform=${platform}`
-    if (genre === "all" ){
-    }else{
-        urlLink = urlLink + `&category=${genre}` 
+    if (genre === "all") {
+    } else {
+        urlLink = urlLink + `&category=${genre}`
     }
 
     urlLink = urlLink + `&sort-by=${preference}`;
@@ -17,7 +17,7 @@ async function buildLink(platform, genre, preference){
 
 }
 
-function parseQueryParams(){
+function parseQueryParams() {
     const url = window.location.href;
     let paramsAll = url.split("?")[1];
     console.log(paramsAll);
@@ -26,7 +26,7 @@ function parseQueryParams(){
     userCategory = paramsEach[0].split("=")[1];
     userPlatform = paramsEach[1].split("=")[1] || "search";
     userSortBy = paramsEach[2].split("=")[1] || "release-date";
-    buildLink(userPlatform,userCategory, userSortBy);
+    buildLink(userPlatform, userCategory, userSortBy);
 }
 
 
@@ -38,11 +38,11 @@ function buildAndAppend(data) {
         let tempCard = buildElement(data[i]);
 
         document.querySelector("#card").append(tempCard);
-        ScrollReveal().reveal(".card", {delay: 250});
+        ScrollReveal().reveal(".card", { delay: 250 });
     }
-  }
+}
 
-  function buildElement(data) {
+function buildElement(data) {
     let div = document.createElement("div");
     div.setAttribute("class", "card")
     div.innerHTML = `
@@ -64,33 +64,37 @@ function buildAndAppend(data) {
             </div>
         </card>
     `
-    ;
+        ;
     return div;
-  }
+}
 
 
-  function addToList(id) {
-    for (let i = 0; i < needToPlayList.length; i++){
-        if (id == needToPlayList[i].id){
+function addToList(id) {
+
+
+    for (let i = 0; i < needToPlayList.length; i++) {
+        if (id == needToPlayList[i].id) {
+            alert("Game is already on your list")
             return;
         }
     }
 
+    alert("Game added to your Need To Play List");
     console.log(id);
-    const gameToAdd = fetchedGames.find( (game) => game.id === id ) 
+    const gameToAdd = fetchedGames.find((game) => game.id === id)
     console.log(gameToAdd)
     needToPlayList.push(gameToAdd);
     saveToLocalStorage("ntp-list", needToPlayList);
-    
-  }
 
-  function populateList(){
+}
 
-      const tableBody = document.querySelector("#game-data")
-      tableBody.innerHTML = ""
-      
-      needToPlayList.forEach( function(game){
-          
+function populateList() {
+
+    const tableBody = document.querySelector("#game-data")
+    tableBody.innerHTML = ""
+
+    needToPlayList.forEach(function (game) {
+
         const tableRow = document.createElement("tr");
 
         const gameColumn = document.createElement("td");
@@ -101,9 +105,9 @@ function buildAndAppend(data) {
         gameImage.setAttribute("src", game.thumbnail);
         gameImage.style.height = "15%";
         gameImage.style.width = "auto";
-        
+
         gameLink.appendChild(gameImage);
-        
+
         gameColumn.appendChild(gameLink);
 
         const genreColumn = document.createElement("td");
@@ -114,12 +118,12 @@ function buildAndAppend(data) {
 
         const actionColumn = document.createElement("td");
         actionColumn.setAttribute("class", "w-25");
-        
+
         const linkTag = document.createElement("a");
         linkTag.setAttribute("class", "btn btn-danger btn-sm");
         linkTag.setAttribute("gameId", game.id)
         linkTag.innerHTML = "Remove";
-        linkTag.addEventListener('click', removeFromList) 
+        linkTag.addEventListener('click', removeFromList)
 
         const iconTag = document.createElement("i");
         iconTag.setAttribute("class", "fa fa-times");
@@ -133,35 +137,35 @@ function buildAndAppend(data) {
         tableRow.appendChild(actionColumn)
 
         tableBody.appendChild(tableRow)
-        
+
     })
-  }
+}
 
-  function removeFromList() {
-        let removeId = this.getAttribute("gameId");
+function removeFromList() {
+    let removeId = this.getAttribute("gameId");
 
-        console.log(removeId);
+    console.log(removeId);
 
-        const gameToRemove = needToPlayList.find( (game) => game.id == removeId )
+    const gameToRemove = needToPlayList.find((game) => game.id == removeId)
 
-        let tempGameList = [];
+    let tempGameList = [];
 
-        console.log(gameToRemove);
+    console.log(gameToRemove);
 
-        for (let i = 0; i < needToPlayList.length; i++){
-            if (needToPlayList[i] === gameToRemove){
-            } else {
-                tempGameList.push(needToPlayList[i]);
-            }
+    for (let i = 0; i < needToPlayList.length; i++) {
+        if (needToPlayList[i] === gameToRemove) {
+        } else {
+            tempGameList.push(needToPlayList[i]);
         }
+    }
 
-        saveToLocalStorage("ntp-list", tempGameList);
-        needToPlayList = readFromLocalStorage("ntp-list");
-        populateList();
-  }
+    saveToLocalStorage("ntp-list", tempGameList);
+    needToPlayList = readFromLocalStorage("ntp-list");
+    populateList();
+}
 
 
-  function saveToLocalStorage(name, data) {
+function saveToLocalStorage(name, data) {
     localStorage.setItem(name, JSON.stringify(data));
 }
 
@@ -182,19 +186,19 @@ document.querySelector("#refresh").addEventListener("click", refreshSearch);
 
 
 // Modal Shopping Cart
-document.querySelector("#cart-btn").addEventListener("click", function(event){
+document.querySelector("#cart-btn").addEventListener("click", function (event) {
     $('#cart-modal').modal('show');
     populateList();
 });
 
-document.querySelector("#close-btn").addEventListener("click", function(event){
+document.querySelector("#close-btn").addEventListener("click", function (event) {
     $('#cart-modal').modal('hide');
 });
-document.querySelector("#x-close-btn").addEventListener("click", function(event){
+document.querySelector("#x-close-btn").addEventListener("click", function (event) {
     $('#cart-modal').modal('hide');
 });
 
 
-if (window.location.href.includes("=")){
+if (window.location.href.includes("=")) {
     parseQueryParams();
 }

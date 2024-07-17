@@ -16,37 +16,15 @@ async function buildLink(platform, genre, preference){
     buildAndAppend(response);
 
 }
-let removeGame = document.getElementsByClassName('btn-sm')
+/*let removeGame = document.getElementsByClassName('btn-danger')
  console.log(removeGame)
  for ( i = 0; i < removeGame.length; i++)
-     button = removeGame[i]
-     button.addEventListener('click', function(event){
+    button = removeGame[i]
+    button.addEventListener('btn-sm', function(event){
          let gameRemoval = event.target
          gameRemoval.parentElement.parentElement.remove()
      }) 
-
-let addGameToList = document.getElementsByClassName('#addToList')
-for (i = 0; i < addGameToList.length; i++ ){
-    button = addGameToList[i]
-    button.addEventListener('click', addGameToListClicked)
-
-}
-function updateModalCart(){
-    let gameCart = document.getElementsByClassName('row')[0]
-    let gameDesc = gameCart.getElementsByClassName('card')
-    for (i = 0; i < gamedesc.length; i++){
-        gamedesc = gamedesc[i]
-        console.log(gameCart)
-    }
-
-}
-function addGameToListClicked(event){
-   button = event.target 
-   game = button.parentElement.parentElement
-   gameTitle = gameData.getElementsByClassName('card')[0].innertext
-   console.log(title)
-}
-
+*/
 function parseQueryParams(){
     const url = window.location.href;
     let paramsAll = url.split("?")[1];
@@ -94,6 +72,7 @@ function buildAndAppend(data) {
             </div>
         </card>
     `
+    ;
     return div;
   }
 
@@ -104,11 +83,48 @@ function buildAndAppend(data) {
     console.log(gameToAdd)
     needToPlayList.push(gameToAdd);
     saveToLocalStorage("ntp-list", needToPlayList);
+    populateList()
     // when needing to get objects
     //readFromLocalStorage("ntp-list")[index].valueToFind
     //example:
     //readFromLocalStorage("ntp-list")[2].title
-    
+  }
+
+  function populateList(){
+    needToPlayList.forEach( function(game){
+        const tableBody = document.querySelector("#game-data")
+        tableBody.innerHTML = ""
+        const tableRow = document.createElement("tr");
+
+        const gameColumn = document.createElement("td");
+        gameColumn.textContent = game.title;
+
+        const genreColumn = document.createElement("td");
+        genreColumn.textContent = game.genre;
+
+        const platformColumn = document.createElement("td");
+        platformColumn.textContent = game.platform;
+
+        const actionColumn = document.createElement("td");
+        actionColumn.setAttribute("class", "w-25");
+        
+        const linkTag = document.createElement("a");
+        linkTag.setAttribute("class", "btn btn-danger btn-sm");
+
+        const iconTag = document.createElement("i");
+        iconTag.setAttribute("class", "fa fa-times");
+
+        linkTag.appendChild(iconTag)
+        actionColumn.appendChild(linkTag)
+
+        tableRow.appendChild(gameColumn)
+        tableRow.appendChild(genreColumn)
+        tableRow.appendChild(platformColumn)
+        tableRow.appendChild(actionColumn)
+
+        tableBody.appendChild(tableRow)
+        
+    })
   }
 
 
@@ -128,7 +144,7 @@ function refreshSearch() {
     buildLink(userPlatform, userGenre, userSortBy);
 }
 
-document.querySelector("#header-btn").addEventListener("click", refreshSearch);
+document.querySelector("#refresh").addEventListener("click", refreshSearch);
 
 
 
